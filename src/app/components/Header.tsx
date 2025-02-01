@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Footer from "./Footer";
+import Clock from "./Clock";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,14 +15,11 @@ export default function Header() {
           <p className="text-[#9B9B9B]">Ramos Sebastian</p>
         </h1>
         <div className="hidden lg:flex justify-evenly w-full">
-            <ul className='text-xs text-[#9B9B9B] flex flex-col '>
+            <ul className='text-xs text-[#9B9B9B] flex flex-col'>
                 <Link href={"/"} className='hover:text-[#333333]'>Projects</Link>
                 <Link href={"/about"} className='hover:text-[#333333]'>Info</Link>
             </ul>
-            <div className='text-xs'>
-                <p>Buenos Aires, Argentina</p>
-                <p className='text-[#9B9B9B]'>Monday, 12:30 p.m.(GMT-3)</p>
-            </div>
+            <Clock></Clock>
             <ul className='text-xs text-[#9B9B9B]'>
                 <p>Instagram</p>
                 <p>Gmail</p>
@@ -47,10 +45,7 @@ export default function Header() {
                         Info
                     </Link>
                 </ul>
-                <div className="text-xs">
-                    <p>Buenos Aires, Argentina</p>
-                    <p className="text-[#9B9B9B]">Monday, 12:30 p.m.(GMT-3)</p>
-                </div>
+                <Clock></Clock>
                 <ul className="text-xs text-[#9B9B9B]">
                     <p>Instagram</p>
                     <p>Gmail</p>
