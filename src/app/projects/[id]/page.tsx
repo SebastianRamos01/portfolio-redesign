@@ -18,7 +18,7 @@ export default async function page({ params } : { params: Promise<{ id: string }
       <Header></Header>
       <div className='flex mx-5 my-20 md:mx-10 justify-between text-[#333333] relative'>
         <Image image={`/${work.img}`} title={work.title}></Image>
-        <Menu title={work?.title ?? "No title"} rol={work?.rol ?? "No rol"} url={work?.url ?? "No url"}></Menu>
+        <Menu title={work?.title ?? "No title"} rol={work?.rol ?? "No rol"} techs={work.technologys} url={work?.url ?? "No url"}></Menu>
       </div>
       <Footer></Footer>
     </>

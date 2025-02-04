@@ -27,6 +27,11 @@ const perspective: {
 
 
 export default function Home() {
+
+  function firstCap (str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+
   return (
     <div>
       <Header></Header>
@@ -42,14 +47,14 @@ export default function Home() {
               key={i} className="md:w-[33%] text-xs text-[#333333] pb-10">
               <Link href={`/projects/${elem.title}`}>
               <article className="lg:max-w-[446px] pb-6 border-b border-[#EBEBEB]">
-                <div className="px-5 py-10 bg-[#F5F5F5] max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer">
+                <div className="px-5 py-10 bg-[#F5F5F5] max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer duration-200">
                   <div className="overflow-hidden h-52 md:h-60">
                     <img src={`/${elem.img}`} alt={elem.title} />
                   </div>
                 </div>
                 <div className="py-2">
                   <div className="flex justify-between">
-                    <p className="text-sm">{elem.title}</p>
+                    <p className="text-sm">{firstCap(elem.title)}</p>
                     <p>{`0${i + 1}`}</p>
                   </div>
                   <p className="text-[#9B9B9B]">{elem.rol}</p>

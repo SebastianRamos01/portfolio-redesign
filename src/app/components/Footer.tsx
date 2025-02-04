@@ -12,7 +12,7 @@ export default function Footer() {
                     2024-Actual
                 </p>
             </div>
-            <div>
+            <div className='w-1/2'>
                 <p>
                     Development & Design
                 </p>

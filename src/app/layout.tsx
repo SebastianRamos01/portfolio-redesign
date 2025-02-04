@@ -4,7 +4,7 @@ import "./globals.css";
 import { AnimatePresence } from "framer-motion";
 
 const roboto = Roboto({
-  weight: '400',
+  weight: ['400', '300'],
   subsets: ['latin'],
 })
 
