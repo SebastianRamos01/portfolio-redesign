@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 type MenuProps = {
     title: string,
-    rol: string,
+    rol: string[],
     techs: string[],
     url: string
 }
@@ -29,6 +29,20 @@ const perspective: {
   },
 };
 
+const menuPerspective: {
+  open: { height: string, transition: { duration: number; ease: number[] }};
+  closed: { height: number };
+} = {
+  open: {
+    height: 'auto',
+    transition: { duration: 0.25, ease: [0.87, 0, 0.13, 1] }
+  },
+  closed: {
+    height: 0
+  }
+  }
+
+
 export default function Menu({title, rol, url, techs}: MenuProps) {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -41,28 +55,33 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
       <menu onClick={() => setIsOpen((isOpen) => !isOpen)} className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed'>
             <div className='pb-5'>
               <h6 className='text-base'>
-                {title}
+                {firstCap(title)}
               </h6>
               <div className='text-xs text-[#9B9B9B]'>
                 {isOpen ? "Tap to Close" : "Tap to Open"}
               </div>
             </div>
-            {isOpen && <ul className='text-xs'>
-                <li className='flex justify-between border-b border-[#EBEBEB] py-3'>
-                  <p className='text-[#9B9B9B]'>Rol</p>
-                  <p className='text-base'>{rol}</p>
+            <motion.ul 
+                  variants={menuPerspective}
+                  animate={isOpen ? 'open' : 'closed'}
+                  className='text-xs'>
+                <li className='flex border-b border-[#EBEBEB] py-3'>
+                  <p className='text-[#9B9B9B] w-1/2'>Rol</p>
+                  <ul className='text-base flex flex-col'>{rol.map((el, i) => {
+                    return  <li key={i}>{el}</li>
+                  })}</ul>
                 </li>
                 <div className='flex border-b border-[#EBEBEB] py-3'>
                   <p className='text-[#9B9B9B] w-1/2'>Technologys</p>
-                    <ul className='text-base flex flex-col'>{techs.map((work, i) => {
+                  <ul className='text-base flex flex-col'>{techs.map((work, i) => {
                     return  <li key={i}>{work}</li>
                   })}</ul>
                 </div>
-                <li className='flex justify-between border-b border-[#EBEBEB] py-3'>
-                  <p className='text-[#9B9B9B]'>URL</p>
+                <li className='flex border-b border-[#EBEBEB] py-3'>
+                  <p className='text-[#9B9B9B] w-1/2'>URL</p>
                   <p className='text-base'>{url ? url : "Not found"}</p>
                 </li>
-              </ul>}
+              </motion.ul>
           </menu>
           <motion.aside 
             variants={perspective}
@@ -76,7 +95,9 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
           <ul>
             <li className='flex border-b border-[#EBEBEB] py-3'>
               <p className='text-[#9B9B9B] w-1/2'>Rol</p>
-              <p className='text-sm'>{rol}</p>
+              <ul className='text-base flex flex-col'>{rol.map((el, i) => {
+                    return  <li key={i}>{el}</li>
+                  })}</ul>
             </li>
             <div className='flex border-b border-[#EBEBEB] py-3'>
               <p className='text-[#9B9B9B] w-1/2'>Technologys</p>
