@@ -40,7 +40,7 @@ const menuPerspective: {
   closed: {
     height: 0
   }
-  }
+}
 
 
 export default function Menu({title, rol, url, techs}: MenuProps) {
@@ -64,6 +64,7 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
             <motion.ul 
                   variants={menuPerspective}
                   animate={isOpen ? 'open' : 'closed'}
+                  initial={'closed'}
                   className='text-xs'>
                 <li className='flex border-b border-[#EBEBEB] py-3'>
                   <p className='text-[#9B9B9B] w-1/2'>Rol</p>
