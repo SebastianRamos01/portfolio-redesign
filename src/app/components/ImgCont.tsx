@@ -2,10 +2,15 @@
 
 import { motion } from 'framer-motion'
 import React from 'react'
+import Image from 'next/image'
 
- type ImageProps = {
+interface ImageProps {
     title: string,
-    image: string
+    src: string; // Renombrado a src para consistencia con Next.js Image
+    alt?: string; // Prop alt opcional para mayor accesibilidad
+    width?: number; // Ancho de la imagen
+    height?: number; // Alto de la imagen
+    priority?: boolean;
 }
 
 const perspective: {
@@ -27,7 +32,13 @@ const perspective: {
   },
 };
 
-export default function Image({title, image}: ImageProps) {
+export default function ImgCont({
+    title, 
+    src, 
+    alt = title,  // Valor por defecto para alt si no se proporciona
+    width,
+    height,
+    priority = true}: ImageProps) {
   return (
     <motion.div
         variants={perspective}
@@ -35,7 +46,7 @@ export default function Image({title, image}: ImageProps) {
           animate="enter"
           exit="exit"
           className="px-5 py-10 bg-[#F5F5F5] md:w-[65%] rounded">
-          <img src={image} alt={title} />
+          <Image src={src} alt={title} width={width} height={height} priority={priority} />
     </motion.div>
   )
 }
