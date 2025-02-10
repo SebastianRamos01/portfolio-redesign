@@ -5,9 +5,8 @@ import React from 'react'
 import Image from 'next/image'
 
 interface ImageProps {
-    title: string,
     src: string; // Renombrado a src para consistencia con Next.js Image
-    alt?: string; // Prop alt opcional para mayor accesibilidad
+    alt: string; // Prop alt opcional para mayor accesibilidad
     width?: number; // Ancho de la imagen
     height?: number; // Alto de la imagen
     priority?: boolean;
@@ -33,9 +32,8 @@ const perspective: {
 };
 
 export default function ImgCont({
-    title, 
     src, 
-    alt = title,  // Valor por defecto para alt si no se proporciona
+    alt,
     width,
     height,
     priority = true}: ImageProps) {
@@ -46,7 +44,7 @@ export default function ImgCont({
           animate="enter"
           exit="exit"
           className="px-5 py-10 bg-[#F5F5F5] md:w-[65%] rounded">
-          <Image src={src} alt={title} width={width} height={height} priority={priority} />
+          <Image src={src} alt={alt} width={width} height={height} priority={priority} />
     </motion.div>
   )
 }

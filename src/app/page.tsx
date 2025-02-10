@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { works } from "./data/data"
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const perspective: {
   initial: { opacity: number };
@@ -49,7 +50,7 @@ export default function Home() {
                 <article className="lg:max-w-[446px] pb-6 border-b border-[#EBEBEB]">
                   <div className="px-5 py-10 bg-[#F5F5F5] max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer duration-200">
                     <div className="overflow-hidden h-52 md:h-60">
-                      <img src={`/${elem.img}`} alt={elem.title} />
+                      <Image src={`/${elem.img}`} alt={elem.title} width={1000} height={1000} priority={true}/>
                     </div>
                   </div>
                   <div className="py-2">
