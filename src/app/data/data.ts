@@ -3,7 +3,7 @@ export const works = [
         title: 'nailstore',
         rol: ['Web Design', 'Front-End Development'],
         technologys: ['React', 'Next.js', 'TailwindCSS', 'Figma'],
-        img: 'furniture-web.png',
+        img: 'home-nailstore.png',
         url: ''
     },
     {
@@ -14,7 +14,7 @@ export const works = [
         url: ''
     },
     {
-        title: 'open-curiosity',
+        title: 'unknown-studio',
         rol: ['Web Design'],
         technologys: ['React', 'Next.js', 'TailwindCSS', 'Figma'],
         img: 'studio-web.png',
@@ -35,7 +35,7 @@ export const works = [
         url: ''
     },
     {
-        title: 'open-curiosity',
+        title: 'furniture',
         rol: ['Web Design', 'Front-End Development'],
         technologys: ['React', 'Next.js', 'TailwindCSS', 'Figma'],
         img: 'furniture-web.png',
