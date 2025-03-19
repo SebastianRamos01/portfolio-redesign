@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { works } from "./data/data"
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "./ThemeContext";
 
 const perspective: {
   initial: { opacity: number };
@@ -26,15 +27,18 @@ const perspective: {
   },
 };
 
-
 export default function Home() {
-
+  
   function firstCap (str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
 
+  const { variants, isDarkMode, artVariants } = useTheme()
+
   return (
-    <div>
+    <motion.div
+      variants={variants}
+      animate={isDarkMode ? 'nightMode' : 'lightMode'}>
       <Header></Header>
       <ul className="mx-5 md:mx-10 my-20 flex flex-col md:flex-row justify-between flex-wrap">
         {works.map((elem, i) => {
@@ -45,14 +49,20 @@ export default function Home() {
               initial="initial"
               animate="enter"
               exit="exit"
-              key={i} className="md:w-[33%] text-xs text-[#333333] pb-10">
+              key={i} 
+              className="md:w-[33%] text-xs pb-10">
               <Link href={`/projects/${elem.title}`}>
-                <article className="lg:max-w-[446px] pb-6 border-b border-[#EBEBEB]">
-                  <div className="px-5 py-10 bg-[#F5F5F5] max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer duration-200">
+                <article 
+                  style={{borderBottomColor: isDarkMode ? '#333333': '#EBEBEB'}}
+                  className="lg:max-w-[446px] pb-6 border-b">
+                  <motion.div 
+                    variants={artVariants}
+                    animate={isDarkMode ? 'nightMode' : 'lightMode'}
+                    className="px-5 py-10 max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer duration-200">
                     <div className="overflow-hidden h-52 md:h-60">
                       <Image src={`/${elem.img}`} alt={elem.title} width={1000} height={1000} priority={true}/>
                     </div>
-                  </div>
+                  </motion.div>
                   <div className="py-2">
                     <div className="flex justify-between">
                       <p className="text-sm">{firstCap(elem.title)}</p>
@@ -67,6 +77,6 @@ export default function Home() {
         })}
       </ul>
       <Footer></ Footer>
-    </div>
+    </motion.div>
   );
 }

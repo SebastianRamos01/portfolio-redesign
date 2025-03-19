@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "./ThemeContext";
 
 const roboto = Roboto({
   weight: ['400', '300'],
@@ -24,7 +25,9 @@ export default function RootLayout({
         className={roboto.className}
       >
         <AnimatePresence>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </AnimatePresence>
       </body>
     </html>
