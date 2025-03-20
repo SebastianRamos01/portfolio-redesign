@@ -21,15 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={roboto.className}
-      >
-        <AnimatePresence>
+        <body
+          className={roboto.className}
+          >
           <ThemeProvider>
-            {children}
+            <AnimatePresence>
+              {children}
+            </AnimatePresence>
           </ThemeProvider>
-        </AnimatePresence>
-      </body>
+        </body>
     </html>
   );
 }

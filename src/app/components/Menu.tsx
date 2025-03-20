@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import React, { useState } from 'react'
+import { useTheme } from '../ThemeContext'
 
 type MenuProps = {
     title: string,
@@ -50,17 +51,23 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
       return str.charAt(0).toUpperCase() + str.slice(1)
     }
 
+    const { isDarkMode, artVariants } = useTheme()
+
   return (
     <>
-      <menu onClick={() => setIsOpen((isOpen) => !isOpen)} className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed'>
-            <div className='pb-5'>
+      <motion.menu
+        variants={artVariants}
+        animate={isDarkMode ? 'nightMode' : 'lightMode'}
+        onClick={() => setIsOpen((isOpen) => !isOpen)} 
+        className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed'>
+          <div className='pb-5'>
               <h6 className='text-base'>
-                {firstCap(title)}
-              </h6>
-              <div className='text-xs text-[#9B9B9B]'>
-                {isOpen ? "Tap to Close" : "Tap to Open"}
-              </div>
+              {firstCap(title)}
+            </h6>
+            <div className='text-xs text-[#9B9B9B]'>
+              {isOpen ? "Tap to Close" : "Tap to Open"}
             </div>
+          </div>
             <motion.ul 
                   variants={menuPerspective}
                   animate={isOpen ? 'open' : 'closed'}
@@ -83,13 +90,13 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
                   <p className='text-base'>{url ? url : "Not found"}</p>
                 </li>
               </motion.ul>
-          </menu>
+          </motion.menu>
           <motion.aside 
             variants={perspective}
             initial="initial"
             animate="enter"
             exit="exit"
-            className='bg-[#F5F5F5] min-w-[440px] h-full text-xs px-5 py-10 hidden lg:block sticky top-0'>
+            className='bg-[#F5F5F5] min-w-[440px] h-full text-xs px-5 py-10 hidden lg:block sticky top-20'>
           <h6 className='text-base'>
             {firstCap(title)}
           </h6>

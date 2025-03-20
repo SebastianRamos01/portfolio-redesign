@@ -40,11 +40,11 @@ export default function ImgCont({
   return (
     <motion.div
         variants={perspective}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="px-5 py-10 bg-[#F5F5F5] md:w-[65%] rounded">
-          <Image src={src} alt={alt} width={width} height={height} priority={priority} />
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        className=" rounded relative">
+        <Image src={src} alt={alt} width={width} height={height} priority={priority} />
     </motion.div>
   )
 }

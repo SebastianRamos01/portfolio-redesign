@@ -24,14 +24,29 @@ export default function Header() {
           <p className="text-[#9B9B9B]">Ramos Sebastian</p>
         </h1>
         <div className="hidden lg:flex justify-evenly w-full">
-            <ul className='text-xs text-[#9B9B9B] flex flex-col'>
-                <Link href={"/"} className='hover:text-[#333333]'>Projects</Link>
-                <Link href={"/about"} className='hover:text-[#333333]'>Info</Link>
-            </ul>
             <Clock></Clock>
+            <ul className='text-xs text-[#9B9B9B] flex flex-col '>
+                <motion.li 
+                  whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}>
+                  <Link href={"/"}>Projects</Link>
+                </motion.li>
+                <motion.li
+                  whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}
+                  style={{color: isDarkMode ? '#ffffff' : '#9B9B9B'}}
+                  className="flex gap-1 items-center cursor-pointer" 
+                  onClick={toggleDarkMode}>
+                  Night Mode{isDarkMode && <div className="bg-white size-1 rounded"></div>}
+                </motion.li>
+            </ul>
             <ul className='text-xs text-[#9B9B9B]'>
-                <p>Instagram</p>
-                <p>Gmail</p>
+              <motion.li
+                whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}>
+                <a href="http://www.instagram.com/dsign.sba/">Instagram</a>
+              </motion.li>
+              <motion.li
+                whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}>
+                <a href="mailto:sebasm.sr@gmail.com">Email</a>
+              </motion.li>
             </ul>
         </div>
         <div onClick={() => setIsOpen((isOpen) => !isOpen)} className="lg:hidden">{isOpen ? 'Close' : 'Menu'}</div>
@@ -42,23 +57,24 @@ export default function Header() {
           animate={isDarkMode ? 'nightMode' : 'lightMode'}
           className="fixed h-screen left-0 top-0 z-10 w-full flex flex-col justify-between">
             <div className="flex flex-col justify-between pt-40 pb-20 px-5 h-full">
-                <ul className="flex gap-40">
-                    <Link href={"/"} className="hover:text-[#333333]">
-                        Projects
-                    </Link>
-                    <Link href={"/about"} className="hover:text-[#333333]">
-                        Info
-                    </Link>
-                </ul>
-                <div
-                  className="flex gap-1 items-center" 
-                  onClick={toggleDarkMode}>
-                  Night Mode{isDarkMode && <div className="bg-white size-1 rounded"></div>}
-                </div>
                 <Clock></Clock>
-                <ul className="text-xs text-[#9B9B9B]">
-                    <p>Instagram</p>
-                    <p>Gmail</p>
+                <ul className="flex gap-40">
+                  <Link href={"/"} className="hover:text-[#333333]">
+                      Projects
+                  </Link>
+                  <div
+                    className="flex gap-1 items-center" 
+                    onClick={toggleDarkMode}>
+                    Night Mode{isDarkMode && <div className="bg-white size-1 rounded"></div>}
+                  </div>
+                </ul>
+                <ul className="text-xs text-[#9B9B9B] flex gap-40">
+                  <li>
+                    <a href="http://www.instagram.com/dsign.sba/">Instagram</a>
+                  </li>
+                  <li>
+                    <a href="mailto:sebasm.sr@gmail.com">Email</a>
+                  </li>
                 </ul>
             </div>
             <Footer></Footer>

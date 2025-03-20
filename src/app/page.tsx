@@ -58,7 +58,8 @@ export default function Home() {
                   <motion.div 
                     variants={artVariants}
                     animate={isDarkMode ? 'nightMode' : 'lightMode'}
-                    className="px-5 py-10 max-h-[380px] overflow-hidden rounded hover:bg-[#EBEBEB] cursor-pointer duration-200">
+                    whileHover={{backgroundColor: '#EBEBEB'}}
+                    className="px-5 py-10 max-h-[380px] overflow-hidden rounded cursor-pointer duration-200">
                     <div className="overflow-hidden h-52 md:h-60">
                       <Image src={`/${elem.img}`} alt={elem.title} width={1000} height={1000} priority={true}/>
                     </div>

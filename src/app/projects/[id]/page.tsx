@@ -1,12 +1,10 @@
 import { works } from '../../data/data'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
-import Menu from '@/app/components/Menu'
-import ImgCont from '@/app/components/ImgCont'
-
+import Project from '@/app/components/Project'
 
 export default async function page({ params } : { params: Promise<{ id: string }> }) {
-    
+
     const { id } = await params
     const work = works.find((elem) => elem.title === id)
 
@@ -16,10 +14,7 @@ export default async function page({ params } : { params: Promise<{ id: string }
     return (
     <>
       <Header></Header>
-      <div className='flex mx-5 my-20 md:mx-10 justify-between text-[#333333] relative'>
-        <ImgCont src={`/${work.img}`} alt={work.title} width={1009} height={100} ></ImgCont>
-        <Menu title={work?.title ?? "No title"} rol={work?.rol ?? "No rol"} techs={work.technologys} url={work?.url ?? "No url"}></Menu>
-      </div>
+      <Project project={work}></Project>
       <Footer></Footer>
     </>
   )
