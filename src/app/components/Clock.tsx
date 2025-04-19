@@ -20,7 +20,7 @@ export default function Clock() {
   }, []);
 
   return (
-    <div className='text-xs'>
+    <div className='text-xs col-span-3'>
         <p>Buenos Aires, Argentina</p>
         <p className='text-[#9B9B9B]'>{dateString}, {timeString} (GMT-3)</p>
     </div>

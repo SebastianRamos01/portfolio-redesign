@@ -9,25 +9,26 @@ import Image from "next/image";
 import { useTheme } from "./ThemeContext";
 
 const perspective: {
-  initial: { opacity: number };
-  enter: (i: number) => { opacity: number; transition: { delay: number } };
-  exit: { opacity: number };
+  initial: { opacity: number; y: number };
+  enter: (i: number) => { opacity: number; y: number ; transition: { delay: number } };
+  exit: { opacity: number; y: number };
 } = {
   initial: {
+    y: 20,
     opacity: 0,
   },
   enter: (i: number) => ({
+    y: 0,
     opacity: 1,
     transition: {
-      delay: 0.2 + i * 0.1,
+      delay: 0.2 + i * 0.15,
     },
   }),
   exit: {
+    y: 0,
     opacity: 0,
   },
 };
-
-const message = "Hello! I'm a web developer and designer, with 2 years of experience creating engaging and functional digital experiences for small bussiness and freelancers. I like to combine deep technical knowledge in web development with a user-centered approach and aesthetic design. I also create websites that not only look good, but also offer an intuitive, performance-optimized user experience."
 
 export default function Home() {
   
@@ -42,7 +43,7 @@ export default function Home() {
       variants={variants}
       animate={isDarkMode ? 'nightMode' : 'lightMode'}>
       <Header></Header>
-      <main className="mx-5 md:mx-10 py-40">
+      <main className="mx-5 md:mx-10 pt-40">
         <div className="py-2 font-bold flex gap-1">
           <p className="">All Works</p>
           <p className="text-xs">({works.length})</p>
@@ -76,7 +77,9 @@ export default function Home() {
                         <p className="text-sm">{firstCap(elem.title)}</p>
                         <p>{`0${i + 1}`}</p>
                       </div>
-                      <p className="text-[#9B9B9B]">{elem.rol}</p>
+                      <ul className='flex gap-1 text-[#9B9B9B]'>{elem.rol.map((el, i) => {
+                          return  <li key={i}>{el}</li>
+                  })}</ul>
                     </div>
                   </article>
                 </Link>
