@@ -31,15 +31,15 @@ const perspective: {
 };
 
 const menuPerspective: {
-  open: { height: string, transition: { duration: number; ease: number[] }};
-  closed: { height: number };
+  open: { bottom: string, transition: { duration: number; ease: number[] }};
+  closed: { bottom: string };
 } = {
   open: {
-    height: 'auto',
+    bottom: '0%',
     transition: { duration: 0.25, ease: [0.87, 0, 0.13, 1] }
   },
   closed: {
-    height: 0
+    bottom: '-100%'
   }
 }
 
@@ -59,8 +59,8 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
         variants={artVariants}
         animate={isDarkMode ? 'nightMode' : 'lightMode'}
         onClick={() => setIsOpen((isOpen) => !isOpen)} 
-        className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed'>
-          <div className='pb-5'>
+        className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed z-10'>
+          <div className=''>
               <h6 className='text-base'>
               {firstCap(title)}
             </h6>
@@ -68,11 +68,14 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
               {isOpen ? "Tap to Close" : "Tap to Open"}
             </div>
           </div>
+          </motion.menu>
+          <motion.div
+            variants={menuPerspective}
+            animate={isOpen ? 'open' : 'closed'}
+            initial={'closed'}
+            className='fixed z-10'>
             <motion.ul 
-                  variants={menuPerspective}
-                  animate={isOpen ? 'open' : 'closed'}
-                  initial={'closed'}
-                  className='text-xs'>
+                  className='text-xs bg-red-300'>
                 <li className='flex border-b border-[#EBEBEB] py-3'>
                   <p className='text-[#9B9B9B] w-1/2'>Rol</p>
                   <ul className='text-base flex flex-col'>{rol.map((el, i) => {
@@ -90,21 +93,21 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
                   <p className='text-base'>{url ? url : "Not found"}</p>
                 </li>
               </motion.ul>
-          </motion.menu>
+          </motion.div>
           <motion.aside 
             variants={perspective}
             initial="initial"
             animate="enter"
             exit="exit"
-            className='bg-[#F5F5F5] min-w-[440px] h-full text-xs px-5 py-10 hidden lg:block sticky top-20'>
-          <h6 className='text-base'>
+            className='h-fit text-xs pr-5 hidden lg:block col-span-3 sticky top-40'>
+          <h6 className='text-base font-bold'>
             {firstCap(title)}
           </h6>
           <ul>
-            <li className='flex border-b border-[#EBEBEB] py-3'>
-              <p className='text-[#9B9B9B] w-1/2'>Rol</p>
+            <li className='flex justify-between border-b border-[#EBEBEB] py-3'>
+              <p className='text-[#9B9B9B]'>Rol</p>
               <ul className='text-base flex flex-col'>{rol.map((el, i) => {
-                    return  <li key={i}>{el}</li>
+                    return  <li className='text-sm' key={i}>{el}</li>
                   })}</ul>
             </li>
             <div className='flex border-b border-[#EBEBEB] py-3'>

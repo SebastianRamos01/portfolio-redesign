@@ -22,16 +22,22 @@ export default function Project({project}: ProjectProps) {
     const { variants, isDarkMode, artVariants } = useTheme()
 
   return (
-    <motion.div
-        variants={variants}
-        animate={isDarkMode ? 'nightMode' : 'lightMode'}>
-        <motion.div 
-            variants={artVariants}
-            animate={isDarkMode ? 'nightMode' : 'lightMode'}
-            className='px-5 py-20 mx-5'>
-            <ImgCont src={`/${project.img}`} alt={project.title} width={1009} height={100} ></ImgCont>
-        </motion.div>
-        <Menu title={project?.title ?? "No title"} rol={project?.rol ?? "No rol"} techs={project.technologys} url={project?.url ?? "No url"}></Menu>
-    </motion.div>
+    <motion.section 
+      className="px-5 lg:px-10 pt-40 grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-3"
+      variants={variants}
+      animate={isDarkMode ? 'nightMode' : 'lightMode'}>
+      <Menu title={project?.title ?? "No title"} rol={project?.rol ?? "No rol"} techs={project.technologys} url={project?.url ?? "No url"}></Menu>
+      <motion.div
+          className="col-span-3 md:col-span-6 lg:col-span-9"
+          >
+          <motion.div 
+              variants={artVariants}
+              animate={isDarkMode ? 'nightMode' : 'lightMode'}
+              className='px-10 py-10 rounded'>
+              <ImgCont src={`/${project.img}`} alt={project.title} width={1009} height={100} ></ImgCont>
+          </motion.div>
+      </motion.div>
+    </motion.section>
+
   )
 }

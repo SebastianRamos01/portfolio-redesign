@@ -9,15 +9,7 @@ export default function Footer() {
                     Working
                 </p>
                 <p className='text-[#9B9B9B]'>
-                    2024-Actual
-                </p>
-            </div>
-            <div className='w-1/2'>
-                <p>
-                    Development & Design
-                </p>
-                <p className='text-[#9B9B9B]'>
-                    Ramos Sebastian
+                    @2024-Actual
                 </p>
             </div>
         </div>
