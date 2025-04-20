@@ -44,7 +44,7 @@ const menuPerspective: {
 }
 
 
-export default function Menu({title, rol, url, techs}: MenuProps) {
+export default function Menu({rol, url, techs}: MenuProps) {
 
     const [isOpen, setIsOpen] = useState(false)
     const { isDarkMode, artVariants } = useTheme()
