@@ -20,18 +20,18 @@ export default function Header() {
         animate={isDarkMode ? 'nightMode' : 'lightMode'}
         className="text-xs fixed top-0 w-full z-30 shadow-sm">
         <div className="grid grid-cols-3 lg:grid-cols-12 h-20 px-5 md:px-10 items-center">
-          <h1 className="text-nowrap col-span-2 lg:col-span-3">
-            <p className="">Ramos Sebastian</p>
-            <p className="text-[#9B9B9B]">Developer & Designer</p>
+          <h1 className="text-nowrap col-span-2 lg:col-span-3 font-black">
+            <Link href={"/"}>
+              <p className="flex items-end">
+                <span className="text-5xl">S</span>
+                <span className="text-xs">@</span>
+              </p>
+            </Link>
           </h1>
           <div onClick={() => setIsOpen((isOpen) => !isOpen)} className="lg:hidden flex justify-end">{isOpen ? 'Close' : 'Menu'}</div>
           <div className="hidden w-full col-span-9 lg:grid grid-cols-9 gap-4 items-center">
               <Clock></Clock>
               <ul className='text-xs text-[#9B9B9B] flex flex-col col-span-3'>
-                  <motion.li 
-                    whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}>
-                    <Link href={"/"}>Projects</Link>
-                  </motion.li>
                   <motion.li
                     whileHover={{color: isDarkMode ? '#ffffff' : '#333333'}}
                     style={{color: isDarkMode ? '#ffffff' : '#9B9B9B'}}

@@ -31,15 +31,15 @@ const perspective: {
 };
 
 const menuPerspective: {
-  open: { bottom: string, transition: { duration: number; ease: number[] }};
-  closed: { bottom: string };
+  open: { height: string, transition: { duration: number; ease: number[] }};
+  closed: { height: string };
 } = {
   open: {
-    bottom: '0%',
+    height: 'auto',
     transition: { duration: 0.25, ease: [0.87, 0, 0.13, 1] }
   },
   closed: {
-    bottom: '-100%'
+    height: '0px'
   }
 }
 
@@ -47,10 +47,6 @@ const menuPerspective: {
 export default function Menu({title, rol, url, techs}: MenuProps) {
 
     const [isOpen, setIsOpen] = useState(false)
-    function firstCap (str: string) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
-    }
-
     const { isDarkMode, artVariants } = useTheme()
 
   return (
@@ -62,20 +58,20 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
         className='lg:hidden bg-[#F5F5F5] w-full bottom-0 left-0 p-5 fixed z-10'>
           <div className=''>
               <h6 className='text-base'>
-              {firstCap(title)}
+              Details
             </h6>
             <div className='text-xs text-[#9B9B9B]'>
               {isOpen ? "Tap to Close" : "Tap to Open"}
             </div>
           </div>
-          </motion.menu>
           <motion.div
             variants={menuPerspective}
             animate={isOpen ? 'open' : 'closed'}
             initial={'closed'}
-            className='fixed z-10'>
+            className=''>
             <motion.ul 
-                  className='text-xs bg-red-300'>
+                  style={isOpen ? {opacity: 1} : {opacity: 0}}
+                  className='text-xs'>
                 <li className='flex border-b border-[#EBEBEB] py-3'>
                   <p className='text-[#9B9B9B] w-1/2'>Rol</p>
                   <ul className='text-base flex flex-col'>{rol.map((el, i) => {
@@ -94,15 +90,13 @@ export default function Menu({title, rol, url, techs}: MenuProps) {
                 </li>
               </motion.ul>
           </motion.div>
+      </motion.menu>
           <motion.aside 
             variants={perspective}
             initial="initial"
             animate="enter"
             exit="exit"
             className='h-fit text-xs pr-5 hidden lg:block col-span-3 sticky top-40'>
-          <h6 className='text-base font-bold'>
-            {firstCap(title)}
-          </h6>
           <ul>
             <li className='flex justify-between border-b border-[#EBEBEB] py-3'>
               <p className='text-[#9B9B9B]'>Rol</p>
