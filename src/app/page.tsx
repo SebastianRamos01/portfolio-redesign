@@ -32,6 +32,8 @@ const perspective: {
 
 export default function Home() {
   
+  const reversedWorks = works.slice().reverse();
+
   function firstCap (str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
@@ -49,7 +51,7 @@ export default function Home() {
           <p className="text-xs">({works.length})</p>
         </div>
         <ul className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
-          {works.map((elem, i) => {
+          {reversedWorks.map((elem, i) => {
             return(
               <motion.li 
                 variants={perspective}
@@ -67,15 +69,15 @@ export default function Home() {
                       variants={artVariants}
                       animate={isDarkMode ? 'nightMode' : 'lightMode'}
                       whileHover={{backgroundColor: '#EBEBEB'}}
-                      className="px-5 py-10 max-h-[380px] overflow-hidden rounded cursor-pointer duration-200">
+                      className="px-5 py-10 max-h-[380px] overflow-hidden rounded cursor-pointer duration-100">
                       <div className="overflow-hidden h-52 md:h-60">
-                        <Image src={`/${elem.img}`} alt={elem.title} width={1000} height={1000} priority={true}/>
+                        <Image src={`/${elem.img}`} alt={elem.title} width={1000} height={1000} priority={i < 2} />
                       </div>
                     </motion.div>
                     <div className="py-2">
                       <div className="flex justify-between">
                         <p className="text-sm">{firstCap(elem.title)}</p>
-                        <p>{`0${i + 1}`}</p>
+                        <p>{`0${elem.id}`}</p>
                       </div>
                       <ul className='flex gap-1 text-[#9B9B9B]'>{elem.rol.map((el, i) => {
                           return  <li key={i}>{el}</li>
