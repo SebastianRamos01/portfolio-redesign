@@ -46,5 +46,29 @@ export const works = [
         technologys: ['React', 'Next.js', 'TailwindCSS', 'Figma'],
         img: 'furniture-web.png',
         url: ''
-     }
+     },
+    {
+        id: 7,
+        title: 'coffe-shop',
+        rol: ['Web Design'],
+        technologys: ['Figma'],
+        img: 'coffe-shop-web.png',
+        url: ''
+     },
+     {
+         id: 8,
+         title: 'lyra-astra',
+         rol: ['Web Design', 'Front-End Development'],
+         technologys: ['React', 'Astro', 'TailwindCSS', 'Figma'],
+         img: 'lyra-astra.png',
+         url: ''
+      },
+      {
+          id: 9,
+          title: 'museum',
+          rol: ['Web Design', 'Front-End Development'],
+          technologys: ['React', 'Next.js', 'TailwindCSS', 'Figma'],
+          img: 'museum-web.png',
+          url: ''
+       }
 ]
